@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}      
+		<div class="row">
+			<div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 text-center col-md-offset-3 col-sm-offset-3 col-xs-offset-3 ">
+			<header>Modification de l'article</header>
+			{% if erreurs %}
+				<div class="alert alert-danger">
+				{% for erreur in erreurs %}
+						{{ erreur }}
+						<br>
+				{% endfor %}
+				</div>
+			 {% endif %}
+				<form action="/update-article" class="topBefore" method="post">
+					<input  type="text" id="titre" name="title" placeholder="Titre" value="{% if article["paragraphe"] %} {{ article["titre"] }} {% endif %}">	
+					<textarea  id="paragraphe" placeholder="Paragraphe" name="paragraph" >{% if article["paragraphe"] %} {{ article["paragraphe"] }} {% endif %}</textarea>
+					<input  type="hidden" id="identifiant" name="identifier"{% if article["identifiant"] %} value= {{ article["identifiant"] }} {% endif %}>
+					<input  type="submit" id="submit" value="Go!">
+				</form>
+			</div>
+		</div>
+{% endblock %}

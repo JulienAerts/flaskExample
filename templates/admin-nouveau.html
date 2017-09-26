@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}      
+		<div class="row">
+			<div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 text-center col-md-offset-3 col-sm-offset-3 col-xs-offset-3 ">
+			<header>Ajout d'article</header>
+			{% if erreurs %}
+				<div class="alert alert-danger">
+				{% for erreur in erreurs %}
+					
+						{{ erreur }}
+						<br>
+				{% endfor %}
+				</div>
+			 {% endif %}
+			 
+				<form action="/ajout-article" class="topBefore" method="post">
+						<input  type="text" id="titre" name="title" placeholder="Titre" {% if data and data.titre %} value= {{ data.titre }} {% endif %}>	
+
+
+						<input  type="text" id="identifiant" name="identifier" placeholder="Identifiant" {% if data and data.identifiant %} value= {{ data.identifiant }} {% endif %} >	
+
+
+						<input  type="text" id="auteur" name="autor" placeholder="Auteur" {% if data and data.auteur %} value= {{ data.auteur }} {% endif %} >	
+
+
+						<input  type="text" id="date_publication" name="publication_date" placeholder="Date de publication" {% if data and data.date_publication %} value= {{ data.date_publication }} {% endif %} >
+
+
+						<textarea  id="paragraphe" placeholder="Paragraphe" name="paragraph" >{% if data and data.paragraphe %} {{ data.paragraphe }} {% endif %}</textarea>
+
+					<input  type="submit" id="submit" value="Go!">
+				</form>
+			</div>
+		</div>
+{% endblock %}
